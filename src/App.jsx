@@ -1,7 +1,13 @@
+import { FaInstagram, FaYoutube } from "react-icons/fa";
+
 export default function App() {
   const phone = "tel:9145045020";
   const whatsapp =
     "https://wa.me/919145045020?text=Hi,%20I%E2%80%99m%20interested%20in%20buying%20a%20property%20in%20Neral.%20Please%20call%20me.";
+
+  // 👉 UPDATE THESE LINKS LATER WITH REAL PROFILES
+  const instagramLink = "https://www.instagram.com/visionrealestate.neral?igsh=dTB0bDFkYnZlYnIy&utm_source=qr/";
+  const youtubeLink = "https://www.youtube.com/@VisionRealEstateNeral";
 
   const properties = [
     {
@@ -9,8 +15,6 @@ export default function App() {
       location: "Neral East",
       price: "₹28 Lakhs",
       image: "/properties/profile1.png"
-  
-
     },
     {
       title: "Commercial Shop",
@@ -39,10 +43,16 @@ export default function App() {
         </p>
 
         <div className="mt-5 flex gap-3">
-          <a href={phone} className="flex-1 bg-green-500 py-3 text-center rounded font-semibold">
+          <a
+            href={phone}
+            className="flex-1 bg-green-500 py-3 text-center rounded font-semibold"
+          >
             Call Now
           </a>
-          <a href={whatsapp} className="flex-1 bg-green-600 py-3 text-center rounded font-semibold">
+          <a
+            href={whatsapp}
+            className="flex-1 bg-green-600 py-3 text-center rounded font-semibold"
+          >
             WhatsApp
           </a>
         </div>
@@ -52,31 +62,28 @@ export default function App() {
       <section className="px-4 py-10">
         <h2 className="text-xl font-bold mb-4">Featured Properties</h2>
 
-  <div className="grid gap-4">
-  {properties.map((p, i) => (
-    <div
-      key={i}
-      className="border rounded-lg overflow-hidden hover:shadow-lg transition bg-white"
-    >
-      {/* Image */}
-      <div className="w-full h-52 overflow-hidden">
-        <img
-          src={p.image}
-          alt={p.title}
-          className="w-full h-full object-cover"
-        />
-      </div>
+        <div className="grid gap-4">
+          {properties.map((p, i) => (
+            <div
+              key={i}
+              className="border rounded-lg overflow-hidden hover:shadow-lg transition bg-white"
+            >
+              <div className="w-full h-52 overflow-hidden">
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover"
+                />
+              </div>
 
-      {/* Content */}
-      <div className="p-4">
-        <h3 className="font-semibold text-lg">{p.title}</h3>
-        <p className="text-sm text-gray-600">{p.location}</p>
-        <p className="font-bold text-green-600 mt-2">{p.price}</p>
-      </div>
-    </div>
-  ))}
-</div>
-
+              <div className="p-4">
+                <h3 className="font-semibold text-lg">{p.title}</h3>
+                <p className="text-sm text-gray-600">{p.location}</p>
+                <p className="font-bold text-green-600 mt-2">{p.price}</p>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* WHY US */}
@@ -102,7 +109,10 @@ export default function App() {
         <h2 className="text-xl font-bold mb-3">
           Looking to Buy or Sell Property?
         </h2>
-        <a href={whatsapp} className="inline-block bg-green-600 text-white px-6 py-3 rounded font-semibold">
+        <a
+          href={whatsapp}
+          className="inline-block bg-green-600 text-white px-6 py-3 rounded font-semibold"
+        >
           WhatsApp Now
         </a>
       </section>
@@ -116,20 +126,67 @@ export default function App() {
         ></iframe>
       </section>
 
-      {/* FOOTER */}
-      <footer className="px-4 py-6 bg-slate-900 text-white text-sm text-center">
-        © {new Date().getFullYear()} Vision RealEstate Neral
-      </footer>
+{/* FOOTER */}
+<footer className="px-4 py-6 bg-slate-900 text-white text-sm">
+  <div className="flex flex-col items-center gap-4">
+
+    {/* Brand */}
+    <p className="font-medium">
+      © {new Date().getFullYear()} Vision RealEstate Neral
+    </p>
+
+    {/* Social Media Icons */}
+    <div className="flex gap-8 text-3xl">
+
+      {/* Instagram */}
+      <a
+        href={instagramLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Instagram"
+        className="transition transform hover:scale-110"
+      >
+        <FaInstagram className="text-pink-500 hover:text-pink-400 transition" />
+      </a>
+
+      {/* YouTube */}
+      <a
+        href={youtubeLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="YouTube"
+        className="transition transform hover:scale-110"
+      >
+        <FaYoutube className="text-red-600 hover:text-red-500 transition" />
+      </a>
+
+    </div>
+
+    {/* Location */}
+    <p className="text-xs text-gray-400 text-center">
+      Neral • Badlapur • Karjat • Vangani • Matheran
+    </p>
+
+  </div>
+</footer>
+
 
       {/* STICKY BUTTONS */}
       <div className="fixed bottom-0 left-0 right-0 flex">
-        <a href={phone} className="flex-1 bg-green-500 text-white text-center py-3 font-semibold">
+        <a
+          href={phone}
+          className="flex-1 bg-green-500 text-white text-center py-3 font-semibold"
+        >
           Call
         </a>
-        <a href={whatsapp} className="flex-1 bg-green-600 text-white text-center py-3 font-semibold">
+        <a
+          href={whatsapp}
+          className="flex-1 bg-green-600 text-white text-center py-3 font-semibold"
+        >
           WhatsApp
         </a>
       </div>
+
     </div>
   );
 }

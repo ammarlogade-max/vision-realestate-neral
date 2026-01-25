@@ -8,7 +8,7 @@ export default function App() {
       title: "2 BHK Apartment",
       location: "Neral East",
       price: "₹28 Lakhs",
-      image: "/src/assets/properties/profile1.png"
+      image: "/src/public/properties/profile1.png"
     
 
 
@@ -18,13 +18,13 @@ export default function App() {
       title: "Commercial Shop",
       location: "Badlapur West",
       price: "₹45 Lakhs",
-      image: "/src/assets/properties/profile2.png"
+      image: "/src/public/properties/profile2.png"
     },
     {
       title: "Luxury Villa",
       location: "Karjat",
       price: "₹95 Lakhs",
-      image: "/src/assets/properties/profile3.png"
+      image: "/src/public/properties/profile3.png"
     }
   ];
 

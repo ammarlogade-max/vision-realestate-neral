@@ -81,7 +81,7 @@ export default function App() {
                   <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
                     {list.map((p) => (
                       <div
-                        key={p._id}
+                        key={p.id}
                         className="border rounded-lg overflow-hidden bg-white hover:shadow-lg transition"
                       >
                         <div className="w-full h-52 overflow-hidden">

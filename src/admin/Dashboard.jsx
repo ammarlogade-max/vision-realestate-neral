@@ -116,11 +116,11 @@ export default function Dashboard() {
             )}
 
             <div className="grid gap-4">
-              {properties
-                .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
-                .map((p) => (
+            {properties
+              .slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
+              .map((p) => (
               <div
-                key={p._id}
+                key={p.id}
                 className="bg-white p-4 rounded shadow flex justify-between items-center"
               >
                 {/* LEFT */}
@@ -134,21 +134,21 @@ export default function Dashboard() {
                 {/* ACTIONS */}
                 <div className="flex gap-2">
                   <button
-                    onClick={() => navigate(`/admin/edit/${p._id}`)}
+                    onClick={() => navigate(`/admin/edit/${p.id}`)}
                     className="px-3 py-1 text-sm bg-blue-600 text-white rounded"
                   >
                     Edit
                   </button>
 
                   <button
-                    onClick={() => handleSold(p._id)}
+                    onClick={() => handleSold(p.id)}
                     className="px-3 py-1 text-sm bg-yellow-500 text-white rounded"
                   >
                     Mark Sold
                   </button>
 
                   <button
-                    onClick={() => handleDelete(p._id)}
+                    onClick={() => handleDelete(p.id)}
                     className="px-3 py-1 text-sm bg-red-600 text-white rounded"
                   >
                     Delete

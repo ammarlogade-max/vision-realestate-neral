@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum PropertyCategory {
+  BHK1
+  BHK2
+  BHK3
+  SHOP
+  VILLA
+  PLOT
+}
+
+enum PropertyStatus {
+  AVAILABLE
+  SOLD
+  RESERVED
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Property {
+  id          String           @id @default(cuid())
+  title       String
+  description String
+  price       String
+  location    String
+  category    PropertyCategory
+  status      PropertyStatus   @default(AVAILABLE)
+  images      String[]
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+}

@@ -1,12 +1,14 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import Admin from "../models/Admin.js";
+import prisma from "../db/prisma.js";
 
 export const loginAdmin = async (req, res) => {
   try {
     const { email, password } = req.body;
 
-    const admin = await Admin.findOne({ email });
+    const admin = await prisma.admin.findUnique({
+      where: { email },
+    });
     if (!admin) {
       return res.status(401).json({ message: "Invalid email or password" });
     }

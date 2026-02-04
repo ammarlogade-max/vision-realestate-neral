@@ -1,32 +1,31 @@
-import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 import dotenv from "dotenv";
-import Admin from "./models/Admin.js";
+import prisma from "./db/prisma.js";
 
 dotenv.config();
 
 const seedAdmin = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI);
-
-    const existingAdmin = await Admin.findOne({
-      email: "admin@visionrealestate.com",
+    const existingAdmin = await prisma.admin.findUnique({
+      where: { email: "admin@visionrealestate.com" },
     });
 
     if (existingAdmin) {
       console.log("⚠️ Admin already exists");
-      process.exit();
+      process.exit(0);
     }
 
     const hashedPassword = await bcrypt.hash("admin123", 10);
 
-    await Admin.create({
-      email: "admin@visionrealestate.com",
-      password: hashedPassword,
+    await prisma.admin.create({
+      data: {
+        email: "admin@visionrealestate.com",
+        password: hashedPassword,
+      },
     });
 
     console.log("✅ Admin seeded successfully");
-    process.exit();
+    process.exit(0);
   } catch (error) {
     console.error("❌ Admin seed failed:", error);
     process.exit(1);

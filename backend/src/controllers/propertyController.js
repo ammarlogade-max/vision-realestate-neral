@@ -51,7 +51,7 @@ export const getPropertyById = async (req, res) => {
 // CREATE
 export const createProperty = async (req, res) => {
   try {
-    const images = req.files?.map((f) => `/uploads/${f.filename}`) || [];
+    const images = req.files?.map((f) => f.path) || [];
 
     const property = await prisma.property.create({
       data: {
@@ -83,7 +83,7 @@ export const updateProperty = async (req, res) => {
       return res.status(404).json({ message: "Property not found" });
     }
 
-    const newImages = req.files?.map((f) => `/uploads/${f.filename}`) || [];
+    const newImages = req.files?.map((f) => f.path) || [];
     let nextImages = property.images || [];
 
     if (req.body.images) {

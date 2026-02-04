@@ -17,11 +17,17 @@ export default function ImageCarousel({ images = [] }) {
 
   return (
     <div className="relative w-full h-52 bg-black overflow-hidden">
-      <img
-        src={`${API_BASE}${images[index]}`}
-        alt="Property"
-        className="w-full h-full object-cover"
-      />
+      {(() => {
+        const img = images[index];
+        const src = img?.startsWith("http") ? img : `${API_BASE}${img}`;
+        return (
+          <img
+            src={src}
+            alt="Property"
+            className="w-full h-full object-cover"
+          />
+        );
+      })()}
 
       {images.length > 1 && (
         <>

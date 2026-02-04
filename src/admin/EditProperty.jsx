@@ -127,7 +127,7 @@ export default function EditProperty() {
               {form.images.map((img, i) => (
                 <img
                   key={`${img}-${i}`}
-                  src={`${API_BASE}${img}`}
+                  src={img?.startsWith("http") ? img : `${API_BASE}${img}`}
                   alt="Property"
                   className="h-20 w-full object-cover rounded"
                 />

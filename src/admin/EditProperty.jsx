@@ -122,9 +122,22 @@ export default function EditProperty() {
             <option value="RESERVED">Reserved</option>
           </select>
 
-          {Array.isArray(form.images) && form.images.length > 0 && (
+          {Array.isArray(form.images) &&
+            form.images.filter(
+              (img) =>
+                img &&
+                !img.startsWith("http://localhost") &&
+                !img.startsWith("http://127.0.0.1")
+            ).length > 0 && (
             <div className="grid grid-cols-3 gap-2">
-              {form.images.map((img, i) => (
+              {form.images
+                .filter(
+                  (img) =>
+                    img &&
+                    !img.startsWith("http://localhost") &&
+                    !img.startsWith("http://127.0.0.1")
+                )
+                .map((img, i) => (
                 <img
                   key={`${img}-${i}`}
                   src={img?.startsWith("http") ? img : `${API_BASE}${img}`}

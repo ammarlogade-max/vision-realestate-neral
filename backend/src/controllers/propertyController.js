@@ -67,8 +67,10 @@ export const createProperty = async (req, res) => {
 
     res.status(201).json(toPublicProperty(property));
   } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Failed to create property" });
+    console.error("CREATE_PROPERTY_ERROR:", err);
+    res
+      .status(500)
+      .json({ message: "Failed to create property", error: err?.message });
   }
 };
 
@@ -113,7 +115,10 @@ export const updateProperty = async (req, res) => {
 
     res.json(toPublicProperty(updated));
   } catch (err) {
-    res.status(500).json({ message: "Failed to update property" });
+    console.error("UPDATE_PROPERTY_ERROR:", err);
+    res
+      .status(500)
+      .json({ message: "Failed to update property", error: err?.message });
   }
 };
 

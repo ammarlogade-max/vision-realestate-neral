@@ -173,6 +173,12 @@ const mapStatus = (value) => {
 const toPublicProperty = (property) => ({
   ...property,
   category: mapCategoryOut(property.category),
+  images: (property.images || []).filter(
+    (img) =>
+      img &&
+      !img.startsWith("http://localhost") &&
+      !img.startsWith("http://127.0.0.1")
+  ),
 });
 
 const mapCategoryOut = (value) => {
